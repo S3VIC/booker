@@ -1,6 +1,7 @@
 #ifndef LOGGING_H
 #define LOGGING_H
-
+#include<QtSql>
+#include<QSqlDatabase>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE

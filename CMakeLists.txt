@@ -53,6 +53,8 @@ else()
 endif()
 
 target_link_libraries(Gabinet PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Sql)
+target_link_libraries(Gabinet PRIVATE Qt${QT_VERSION_MAJOR}::Sql)
 find_package(Vulkan REQUIRED)
 target_include_directories(${PROJECT_NAME} PUBLIC ${Vulkan_INCLUDE_DIRS})
 set_target_properties(Gabinet PROPERTIES
