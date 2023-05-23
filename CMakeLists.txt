@@ -11,7 +11,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
-
+#For sql implementation
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Sql)
+#Vulkan
+#find_package(Vulkan REQUIRED)
 set(PROJECT_SOURCES
         main.cpp
 
@@ -51,8 +54,10 @@ else()
     endif()
 endif()
 
+target_link_libraries(booker PRIVATE Qt${QT_VERSION_MAJOR}::Sql)
 target_link_libraries(booker PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-
+#target_include_directories(${PROJECT_NAME} PUBLIC ${Vulkan_INCLUDE_DIRS})
+#target_include_directories(${PROJECT_NAME} PUBLIC "/usr/include/lib/")
 set_target_properties(booker PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
